@@ -53,13 +53,28 @@
           </label>
         </div>
 
-        <h3>Training Programme</h3>
-        <div class="training-input-row">
-          <input
-            id="trainingInput"
-            type="text"
-            placeholder="e.g., 30 min treadmill + core workout"
-          />
+        <select id="trainingType">
+  <option value="Quad training">Quad training</option>
+  <option value="Brisk Walking">Brisk Walking</option>
+  <option value="Jogging">Jogging</option>
+  <option value="Cycling">Cycling</option>
+  <option value="Rest Day">Rest Day</option>
+</select>
+
+<input
+  id="trainingMinutes"
+  type="number"
+  min="0"
+  step="1"
+  placeholder="Minutes (optional)"
+/>
+
+<input
+  id="trainingInput"
+  type="text"
+  placeholder="Notes (optional) e.g., Squats + lunges / Zone 2 / intervals"
+/>
+
           <button id="addTrainingBtn" type="button">Add</button>
         </div>
         <ul id="trainingList" class="training-list"></ul>
