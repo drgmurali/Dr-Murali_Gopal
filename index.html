@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Daily Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="card hero">
+        <h1>Daily Fitness Tracker</h1>
+        <p>
+          Track training, steps, water, sleep, and calorie burn in one place.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Profile</h2>
+        <div class="grid two-cols">
+          <label>
+            Height (cm)
+            <input id="height" type="number" min="80" max="250" step="0.1" />
+          </label>
+          <label>
+            Weight (kg)
+            <input id="weight" type="number" min="20" max="300" step="0.1" />
+          </label>
+        </div>
+        <p class="hint">
+          Calories are estimated from your steps, height and weight.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Today</h2>
+        <div class="grid two-cols">
+          <label>
+            Date
+            <input id="entryDate" type="date" />
+          </label>
+          <label>
+            Step count
+            <input id="steps" type="number" min="0" step="1" />
+          </label>
+          <label>
+            Water intake (liters)
+            <input id="water" type="number" min="0" step="0.1" />
+          </label>
+          <label>
+            Sleep (hours)
+            <input id="sleep" type="number" min="0" max="24" step="0.1" />
+          </label>
+        </div>
+
+        <h3>Training Programme</h3>
+        <div class="training-input-row">
+          <input
+            id="trainingInput"
+            type="text"
+            placeholder="e.g., 30 min treadmill + core workout"
+          />
+          <button id="addTrainingBtn" type="button">Add</button>
+        </div>
+        <ul id="trainingList" class="training-list"></ul>
+
+        <div class="results">
+          <p>
+            Estimated calories burnt:
+            <strong id="caloriesBurnt">0</strong>
+            kcal
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="saveBtn" type="button">Save Daily Entry</button>
+          <button id="clearBtn" type="button" class="secondary">
+            Clear Inputs
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Saved Entries</h2>
+        <div id="savedEntries" class="saved-entries"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
