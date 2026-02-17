@@ -195,3 +195,65 @@ function init() {
 }
 
 init();
+// ===== CSV Export =====
+function toCsvValue(v) {
+  const s = (v ?? "").toString().replace(/"/g, '""');
+  return `"${s}"`;
+}
+
+function buildEntriesCsv(entries) {
+  const headers = [
+    "date",
+    "height_cm",
+    "weight_kg",
+    "steps",
+    "water_liters",
+    "sleep_hours",
+    "estimated_calories_kcal",
+    "training_items"
+  ];
+
+  const lines = [];
+  lines.push(headers.join(","));
+
+  for (const e of entries || []) {
+    const training = Array.isArray(e.training)
+      ? e.training.join(" | ")
+      : (e.training || "");
+
+    const row = [
+      toCsvValue(e.date || ""),
+      toCsvValue(e.profile?.height || ""),
+      toCsvValue(e.profile?.weight || ""),
+      toCsvValue(e.steps ?? ""),
+      toCsvValue(e.water ?? ""),
+      toCsvValue(e.sleep ?? ""),
+      toCsvValue(e.calories ?? ""),
+      toCsvValue(training)
+    ];
+    lines.push(row.join(","));
+  }
+
+  return lines.join("\n");
+}
+
+function downloadTextFile(filename, text, mime = "text/plain") {
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportEntriesToCsv() {
+  const entries = getEntries(); // <-- your app already uses getEntries()
+  const csv = buildEntriesCsv(entries);
+  const today = new Date().toISOString().slice(0, 10);
+  downloadTextFile(`daily-fitness-tracker-${today}.csv`, csv, "text/csv;charset=utf-8");
+}
+
+document.getElementById("exportCsvBtn")?.addEventListener("click", exportEntriesToCsv);
