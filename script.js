@@ -223,8 +223,8 @@ function buildEntriesCsv(entries) {
 
     const row = [
       toCsvValue(e.date || ""),
-      toCsvValue(e.profile?.height || ""),
-      toCsvValue(e.profile?.weight || ""),
+      toCsvValue(getProfile()?.height || ""),
+      toCsvValue(getProfile()?.weight || ""),
       toCsvValue(e.steps ?? ""),
       toCsvValue(e.water ?? ""),
       toCsvValue(e.sleep ?? ""),
