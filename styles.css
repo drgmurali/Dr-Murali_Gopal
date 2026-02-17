@@ -1,0 +1,164 @@
+:root {
+  color-scheme: light;
+  --bg: #f2f5fb;
+  --card: #ffffff;
+  --text: #1d2433;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --border: #dbe3ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #eef4ff, var(--bg));
+  color: var(--text);
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+}
+
+.hero p,
+.hint {
+  margin: 0;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.two-cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.94rem;
+}
+
+input,
+button {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  padding: 10px;
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid #bfdbfe;
+  outline-offset: 1px;
+}
+
+button {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+button.secondary {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.training-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.training-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.training-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.training-list button {
+  background: #ef4444;
+  border-color: #ef4444;
+  padding: 6px 8px;
+}
+
+.results,
+.actions {
+  margin-top: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.saved-entries {
+  display: grid;
+  gap: 10px;
+}
+
+.entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbfdff;
+}
+
+.entry p {
+  margin: 0 0 6px;
+}
+
+.entry ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 640px) {
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
